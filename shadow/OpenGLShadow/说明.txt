@@ -1,0 +1,42 @@
+http://www.cnblogs.com/liangliangh/
+
+配置目标：
+  1. 所有库放到工程文件夹内，程序不依赖系统；
+  2. 64位支持，可能需要自己编译库的64位版本。
+
+工程的配置过程如下：
+
+一、程序依赖于如下库
+  1. GLEW，(.lib, .dll)，用于处理OpenGL本地扩展；（网站下载win32/x64编译好文件）
+  2. GLFW，(.lib, .dll)，用于处理窗口，以及创建OpenGL Context；（自行编译VS2010版本，静态/DLL、win32/x64，使用cmake，源文件目录选“glfw-3.0.4”而不是“glfw-3.0.4/src”，分别编译win32/x64下静态/DLL共四种，x64下将三个“/machine:X86”改为x64，VS工程下新建x64平台）
+  3. Freeglut，(.lib, .dll)，处理窗口，但本文只用其绘制基本几何体，如茶壶；（自行编译win32/x64，使用cmake，VS工程下新建x64平台）
+  4. GLM，(纯头文件)，OpenGL数学库，向量及矩阵代数计算；
+  5. DevIL，(.lib, .dll)，读写图片，支持很多格式，如JPG、PNG；（网站下载win32/x64编译好文件）
+  6. FTGL（作者网站），(.lib, .dll)，在OpenGL中显示字体，支持TrueType字体文件读取，支持抗锯齿字体、拉伸实体字形等，需要FreeType，(.lib)，库支持；（先编译FreeType，win32/x64，再编译FTGL，添加编译好的FreeType头文件和.lib文件目录，添加x64平台）
+  7. Bullet，(.lib)，物理引擎，可以进行刚体可变形体的模拟；（自行编译win32/x64，运行库改为DLL版本/MD，需要编译Debug版因为是静态库，否则报错D_ITERATOR_DEBUG_LEVEL...）
+  8. VCG，(纯头文件，有些IO操作需要.cpp)，读写.obj等网格数据，高效表示网格，并有大量如网格修复算法实现。
+注：程序统一用DLL版本运行库，Release下编译的库文件有时Debug下也可以用（一般是在DLL下，混合使用静态/DLL、Debug/Release版本的CRT不是好习惯且有条件，条件是不能混合使用不同CRT的内存管理机制等，但使用的库太多，每个都编译好多版本太费事了）。
+
+二、将“项目属性”-“配置属性”-“常规”（所有配置，所有平台）下的输出目录改为“$(SolutionDir)_Bin\$(Platform)\”，中间目录改为“$(Platform)\$(Configuration)\”，目标文件名改为“$(ProjectName)_$(Platform)_$(Configuration)”。
+注：
+1.  $(SolutionDir)_Bin\$(Platform)\
+2.  $(Platform)\$(Configuration)\
+3.  $(ProjectName)_$(Platform)_$(Configuration)
+“.\”和“..\”代表当前文件夹和上一层文件夹（“\”也可换成“/”，代码中使用“\”需要转义“\\”）。
+
+三、将“一、”中库放到“$SolutionDir\_Libs”文件夹下，在“项目属性”-“配置属性”-“VC++目录”的“包含目录”和“库目录”（所有配置，所有平台）下添加“一、”中的库的头文件和库文件路径（使用“$SolutionDir”宏），将“.dll”文件拷贝到“$SolutionDir\_Bin”下的相应文件夹下以运行程序。
+注：
+1.  $(SolutionDir)_Libs;$(SolutionDir)_Libs\glew-1.11.0\include;$(SolutionDir)_Libs\glfw-3.0.4\include;$(SolutionDir)_Libs\freeglut-2.8.1\include;$(SolutionDir)_Libs\glm-0.9.6.1\include;$(SolutionDir)_Libs\bullet-2.82\include;$(SolutionDir)_Libs\DevIL-1.7.8\include;$(SolutionDir)_Libs\vcglib\include;$(SolutionDir)_Libs\ftgl-2.1.3\include;$(SolutionDir)_Libs\freetype-2.5.4\include;$(IncludePath)
+2.  $(SolutionDir)_Libs;$(SolutionDir)_Libs\glew-1.11.0\lib;$(SolutionDir)_Libs\glfw-3.0.4\lib;$(SolutionDir)_Libs\freeglut-2.8.1\lib;$(SolutionDir)_Libs\bullet-2.82\lib;$(SolutionDir)_Libs\DevIL-1.7.8\lib;$(SolutionDir)_Libs\ftgl-2.1.3\lib;$(SolutionDir)_Libs\freetype-2.5.4\lib;$(LibraryPath)
+
+四、将“项目属性”-“配置属性”-“C/C++”-“语言”-“OpenMP支持”（所有配置，所有平台）改为“是”（可选）。
+
+五、在“配置管理器”（项目属性，右上角按钮）中新建解决方案平台“x64”，在程序中用“#ifdef _WIN64”来识别是否为64位（参见http://msdn.microsoft.com/en-us/library/b0084kay(v=vs.100).aspx），以此添加对64位支持，注意“一、”中要提供64位版本的“.lib, .dll”文件，并用“#ifdef _WIN64”选择性包含对应“.lib”文件。
+注：win7 64-bit下“C:\Program Files”为x64应用，“C:\Program Files (x86)”为win32应用，“C:\Windows\System32”为x64的DLL，“C:\Windows\SysWOW64”（WOW64 refer to Windows on Windows64）为win32的DLL，VS内置宏见http://msdn.microsoft.com/en-us/library/b0084kay.aspx。
+
+六、快速新建项目（继承上述设置，以及预编译头）：
+ 1.  将“abc mygl文件夹”拷贝副本，删除副本文件夹内除“.cpp, .vcxproj, .vcxproj.user”之外文件；
+ 2.  将“abc mygl”这个名字换成想要的名字，将“.vcxproj”文件内容中的一处“abcmygl”文本替换为所起名字（去掉空格）；
+ 3.  在工程中工程上右键添加现有项目，选择“.vcxproj”文件。
+注：关于.sln、.suo等文件作用见http://blog.csdn.net/huapeng_guo/article/details/7692640，关于使用预编译加速编译过程见http://www.cnblogs.com/cofd/archive/2007/11/05/949962.html。
+关于error C3859：“项目属性”-“C/C++”-“命令行”-“其他选项”（所有配置，所有平台）改为“/Zm200”（200这个数字可以更大，stdafx.cpp属性同样设置），增大PCH文件内存限额，见http://msdn.microsoft.com/zh-cn/library/bdscwf1c(v=vs.100).aspx。
