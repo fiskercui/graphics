@@ -111,21 +111,42 @@ int loadImage()
 
 	return 0;
 }
-void addRoi()
+int addRoi()
 {
-	Mat logo = imread("logo_s.png");
+	double alpha = 0.5; double beta; double input;
 
-	Mat image = imread("main_bg3.png", 199);
+	Mat src1, src2, dst;
 
-	//定义一个Mat类型，用于存放，图像的ROI  
-	Mat imageROI;
-	//方法一  
-	imageROI = image(Rect(1024, 1024, logo.cols, logo.rows));
-	//方法二  
-	//imageROI=image(Range(350,350+logo.rows),Range(800,800+logo.cols));  
+	/// Ask the user enter alpha
+	std::cout << " Simple Linear Blender " << std::endl;
+	std::cout << "-----------------------" << std::endl;
+	std::cout << "* Enter alpha [0-1]: ";
+	std::cin >> input;
 
-	//将logo加到原图上  
-	addWeighted(imageROI, 0.5, logo, 0.3, 0., imageROI);
+	// We use the alpha provided by the user iff it is between 0 and 1
+	if (alpha >= 0 && alpha <= 1)
+	{
+		alpha = input;
+	}
+
+	/// Read image ( same size, same type )
+	src1 = imread("girl.jpg");
+	src2 = imread("girl3.jpg");
+
+	if (!src1.data) { printf("Error loading src1 \n"); return -1; }
+	if (!src2.data) { printf("Error loading src2 \n"); return -1; }
+
+	/// Create Windows
+	namedWindow("Linear Blend", 1);
+
+	beta = (1.0 - alpha);
+	addWeighted(src1, alpha, src2, beta, 0.0, dst);
+
+	imshow("Linear Blend", dst);
+
+	waitKey(0);
+	return 0;
+
 
 }
 int main()
@@ -133,7 +154,8 @@ int main()
 	//testAlpha();
 	//testShowImage();
 	//addRoi();
-	loadImage();
+	//loadImage();
+	addRoi();
     return 0;
 }
 
