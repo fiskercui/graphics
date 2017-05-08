@@ -54,13 +54,6 @@ void testShowImage()
 	cvReleaseImage(&pImage);
 }
 
-//-----------------------------------【程序说明】----------------------------------------------  
-//  程序名称:：【OpenCV入门教程之三】图像的载入，显示与输出 一站式完全解析 博文配套源码  
-// VS2010版   OpenCV版本：2.4.8  
-//      2014年3月5日 Create by 浅墨  
-//  描述： 图像的载入，显示与输出 一站式剖析   配套源码  
-//  图片素材出处：dota2原画圣堂刺客 dota2 logo  动漫人物  
-//------------------------------------------------------------------------------------------------  
 
 //
 //#include<opencv2/core/core.hpp>  
@@ -111,7 +104,7 @@ int loadImage()
 
 	return 0;
 }
-int addRoi()
+int testLineBlend()
 {
 	double alpha = 0.5; double beta; double input;
 
@@ -146,16 +139,97 @@ int addRoi()
 
 	waitKey(0);
 	return 0;
-
-
 }
+
+
+bool testMultiChannelBlending()
+{
+	Mat srcImage;
+	Mat logoImage;
+	vector<Mat>channels;
+	Mat  imageBlueChannel;
+
+
+	//【1】读入图片  
+	logoImage = imread("girl.jpg", 0);
+	srcImage = imread("main_bg3.png", IMREAD_UNCHANGED);
+
+
+	//【2】把一个3通道图像转换成3个单通道图像  
+	split(srcImage, channels);//分离色彩通道  
+
+	imwrite("blue.png", channels[0]);
+	imwrite("green.png", channels[1]);
+	imwrite("red.png", channels[2]);
+
+	if (channels.size() >= 4)
+	{
+		imwrite("alpha.png", channels[3]);
+	}
+
+	//imwrite("alpha.png", channels[3]);
+
+
+	//						  //【3】将原图的蓝色通道引用返回给imageBlueChannel，注意是引用，相当于两者等价，修改其中一个另一个跟着变  
+	//imageBlueChannel = channels.at(0);
+	////【4】将原图的蓝色通道的（500,250）坐标处右下方的一块区域和logo图进行加权操作，将得到的混合结果存到imageBlueChannel中  
+	//
+	//imageBlueChannel(Rect(500, 250, logoImage.cols, logoImage.rows));
+
+	//addWeighted(imageBlueChannel(Rect(500, 250, logoImage.cols, logoImage.rows)), 1.0,
+	//	logoImage, 0.5, 0, imageBlueChannel(Rect(500, 250, logoImage.cols, logoImage.rows)));
+
+	////【5】将三个单通道重新合并成一个三通道  
+	//merge(channels, srcImage);
+
+	////【6】显示效果图  
+	//namedWindow("<1>");
+	//imshow("<1>", srcImage);
+
+
+	////=================【绿色通道部分】=================  
+	////     描述：多通道混合-绿色分量部分  
+	////============================================  
+
+	////【0】定义相关变量  
+	//Mat  imageGreenChannel;
+
+	////【1】重新读入图片  
+	//logoImage = imread("dota_logo.jpg", 0);
+	//srcImage = imread("dota_jugg.jpg");
+
+	//if (!logoImage.data) { printf("Oh，no，读取logoImage错误~！\n"); return false; }
+	//if (!srcImage.data) { printf("Oh，no，读取srcImage错误~！\n"); return false; }
+
+	////【2】将一个三通道图像转换成三个单通道图像  
+	//split(srcImage, channels);//分离色彩通道  
+
+	//						  //【3】将原图的绿色通道的引用返回给imageBlueChannel，注意是引用，相当于两者等价，修改其中一个另一个跟着变  
+	//imageGreenChannel = channels.at(1);
+	////【4】将原图的绿色通道的（500,250）坐标处右下方的一块区域和logo图进行加权操作，将得到的混合结果存到imageGreenChannel中  
+	//addWeighted(imageGreenChannel(Rect(500, 250, logoImage.cols, logoImage.rows)), 1.0,
+	//	logoImage, 0.5, 0., imageGreenChannel(Rect(500, 250, logoImage.cols, logoImage.rows)));
+
+	////【5】将三个独立的单通道重新合并成一个三通道  
+	//merge(channels, srcImage);
+
+	////【6】显示效果图  
+	//namedWindow("<2>游戏原画+logo绿色通道 by浅墨");
+	//imshow("<2>游戏原画+logo绿色通道 by浅墨", srcImage);
+
+	return true;
+}
+
+
 int main()
 {
 	//testAlpha();
 	//testShowImage();
 	//addRoi();
 	//loadImage();
-	addRoi();
+	//testLineBlend();
+
+	testMultiChannelBlending();
     return 0;
 }
 
