@@ -27,12 +27,18 @@
     <ClInclude Include="common.h">
       <Filter>源文件</Filter>
     </ClInclude>
+    <ClInclude Include="testLineFilter.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="testocv.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="testLineFilter.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
