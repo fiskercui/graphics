@@ -30,6 +30,12 @@
     <ClInclude Include="testLineFilter.h">
       <Filter>源文件</Filter>
     </ClInclude>
+    <ClInclude Include="testdilate.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="testMorphology.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -39,6 +45,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="testLineFilter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="testdilate.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="testMorphology.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

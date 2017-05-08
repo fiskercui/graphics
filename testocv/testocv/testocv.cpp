@@ -383,6 +383,9 @@ bool TestContrastAndBright()
 }
 
 #include "testLineFilter.h"
+#include "testdilate.h"
+#include "TestMorphology.h"
+
 int main()
 {
 	//testAlpha();
@@ -399,7 +402,10 @@ int main()
 	//TestContrastAndBright();
 
 	//testLineFilter();
-	testFilter();
+	//testFilter();
+
+	//testDilate();
+	testMorphology();
 
     return 0;
 }
