@@ -385,6 +385,9 @@ bool TestContrastAndBright()
 #include "testLineFilter.h"
 #include "testdilate.h"
 #include "TestMorphology.h"
+#include "testPyUpDown.h"
+#include "testHough.h"
+#include "testFloodFill.h"
 
 int main()
 {
@@ -405,7 +408,13 @@ int main()
 	//testFilter();
 
 	//testDilate();
-	testMorphology();
+	//testMorphology();
+
+	//testPyUpDown();
+	//testHoughCircles();
+
+	//testHoughLines();
+	testFloodFill();
 
     return 0;
 }
