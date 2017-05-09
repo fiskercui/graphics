@@ -135,6 +135,4 @@ static void ShowHelpText()
 {
 	//输出一些帮助信息  
 	printf("\n\n\n\t请调整滚动条观察图像效果~\n\n");
-	printf("\n\n\t\t\t\t\t\t\t\t by浅墨"
-	);
 }

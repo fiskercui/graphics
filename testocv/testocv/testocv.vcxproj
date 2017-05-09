@@ -164,6 +164,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="testDilate.h" />
     <ClInclude Include="testFloodFill.h" />
+    <ClInclude Include="testHarris.h" />
     <ClInclude Include="testHough.h" />
     <ClInclude Include="testLineFilter.h" />
     <ClInclude Include="testMorphology.h" />
@@ -173,6 +174,7 @@
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="testDilate.cpp" />
     <ClCompile Include="testFloodFill.cpp" />
+    <ClCompile Include="testHarris.cpp" />
     <ClCompile Include="testHough.cpp" />
     <ClCompile Include="testLineFilter.cpp" />
     <ClCompile Include="testMorphology.cpp" />

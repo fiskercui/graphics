@@ -388,6 +388,7 @@ bool TestContrastAndBright()
 #include "testPyUpDown.h"
 #include "testHough.h"
 #include "testFloodFill.h"
+#include "testHarris.h"
 
 int main()
 {
@@ -414,8 +415,11 @@ int main()
 	//testHoughCircles();
 
 	//testHoughLines();
-	testFloodFill();
+	//testFloodFill();
 
-    return 0;
+
+	testHarris();
+
+	return 0;
 }
 
