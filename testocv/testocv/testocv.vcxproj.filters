@@ -30,10 +30,16 @@
     <ClInclude Include="testLineFilter.h">
       <Filter>源文件</Filter>
     </ClInclude>
-    <ClInclude Include="testdilate.h">
+    <ClInclude Include="testMorphology.h">
       <Filter>源文件</Filter>
     </ClInclude>
-    <ClInclude Include="testMorphology.h">
+    <ClInclude Include="testDilate.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="testPyUpDown.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="testHough.h">
       <Filter>源文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,10 +53,16 @@
     <ClCompile Include="testLineFilter.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="testdilate.cpp">
+    <ClCompile Include="testMorphology.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="testMorphology.cpp">
+    <ClCompile Include="testDilate.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="testPyUpDown.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="testHough.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

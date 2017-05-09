@@ -162,16 +162,20 @@
     <ClInclude Include="common.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="testdilate.h" />
+    <ClInclude Include="testDilate.h" />
+    <ClInclude Include="testHough.h" />
     <ClInclude Include="testLineFilter.h" />
     <ClInclude Include="testMorphology.h" />
+    <ClInclude Include="testPyUpDown.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="testdilate.cpp" />
+    <ClCompile Include="testDilate.cpp" />
+    <ClCompile Include="testHough.cpp" />
     <ClCompile Include="testLineFilter.cpp" />
     <ClCompile Include="testMorphology.cpp" />
     <ClCompile Include="testocv.cpp" />
+    <ClCompile Include="testPyUpDown.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
