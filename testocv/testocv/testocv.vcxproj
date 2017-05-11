@@ -171,6 +171,7 @@
     <ClInclude Include="testPyUpDown.h" />
     <ClInclude Include="testRemap.h" />
     <ClInclude Include="testSurf.h" />
+    <ClInclude Include="testTranslation.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -184,6 +185,7 @@
     <ClCompile Include="testPyUpDown.cpp" />
     <ClCompile Include="testRemap.cpp" />
     <ClCompile Include="testSurf.cpp" />
+    <ClCompile Include="testTranslation.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

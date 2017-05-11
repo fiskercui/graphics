@@ -54,6 +54,9 @@
     <ClInclude Include="testSurf.h">
       <Filter>源文件</Filter>
     </ClInclude>
+    <ClInclude Include="testTranslation.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -87,6 +90,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="testSurf.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="testTranslation.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

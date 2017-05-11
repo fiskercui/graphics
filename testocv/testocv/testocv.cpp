@@ -391,6 +391,7 @@ bool TestContrastAndBright()
 #include "testHarris.h"
 #include "testRemap.h"
 #include "testSurf.h"
+#include "testTranslation.h"
 
 int main(int argc, char** argv)
 {
@@ -422,7 +423,11 @@ int main(int argc, char** argv)
 
 	//testHarris();
 	//testRemap(argc, argv);
-	testSurf();
+
+	//testSurf();
+	testSurfMatch();
+
+	//testTranslate();
 
 	return 0;
 }
