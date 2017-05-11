@@ -389,8 +389,10 @@ bool TestContrastAndBright()
 #include "testHough.h"
 #include "testFloodFill.h"
 #include "testHarris.h"
+#include "testRemap.h"
+#include "testSurf.h"
 
-int main()
+int main(int argc, char** argv)
 {
 	//testAlpha();
 	//testShowImage();
@@ -418,7 +420,9 @@ int main()
 	//testFloodFill();
 
 
-	testHarris();
+	//testHarris();
+	//testRemap(argc, argv);
+	testSurf();
 
 	return 0;
 }

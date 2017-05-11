@@ -71,7 +71,6 @@ void on_CornerHarris(int, void*)
 	Mat dstImage;//目标图  
 	Mat normImage;//归一化后的图  
 	Mat scaledImage;//线性变换后的八位无符号整型的图  
-
 					//---------------------------【2】初始化---------------------------------------  
 					//置零当前需要显示的两幅图，即清除上一次调用此函数时他们的值  
 	dstImage = Mat::zeros(g_srcImage.size(), CV_32FC1);

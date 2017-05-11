@@ -48,6 +48,12 @@
     <ClInclude Include="testHarris.h">
       <Filter>源文件</Filter>
     </ClInclude>
+    <ClInclude Include="testRemap.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="testSurf.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -75,6 +81,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="testHarris.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="testRemap.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="testSurf.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

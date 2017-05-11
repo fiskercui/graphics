@@ -107,13 +107,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>G:\pythonLib\opencv\build\include\opencv;G:\pythonLib\opencv\build\include\opencv2;G:\pythonLib\opencv\build\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\pythonLib\opencv\build\include\opencv;G:\pythonLib\opencv\build\include\opencv2;G:\pythonLib\opencv\build\include;G:\pythonLib\opencv\sources\modules\features2d\include;G:\pythonLib\opencv\sources\opencv_contrib-3.2.0\modules\xfeatures2d\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>G:\pythonLib\opencv\build\x64\vc14\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opencv_world320d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>G:\pythonLib\opencv\build\install\x64\vc14\lib;G:\pythonLib\opencv\build\x64\vc14\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_world320d.lib;opencv_xfeatures2d320d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -169,6 +169,8 @@
     <ClInclude Include="testLineFilter.h" />
     <ClInclude Include="testMorphology.h" />
     <ClInclude Include="testPyUpDown.h" />
+    <ClInclude Include="testRemap.h" />
+    <ClInclude Include="testSurf.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -180,6 +182,8 @@
     <ClCompile Include="testMorphology.cpp" />
     <ClCompile Include="testocv.cpp" />
     <ClCompile Include="testPyUpDown.cpp" />
+    <ClCompile Include="testRemap.cpp" />
+    <ClCompile Include="testSurf.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
